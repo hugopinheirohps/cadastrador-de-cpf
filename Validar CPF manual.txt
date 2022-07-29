@@ -1,0 +1,32 @@
+
+// Validação manual de CPF
+function validacaoTest(numeroCpf) {
+    let x = 10;
+    let somaTotal = 0;
+    let multi = 0;
+    for (let i = 0; i < 9; i++) {
+      multi = numeroCpf[i] * x;
+      somaTotal = somaTotal + multi;
+      x--;
+    }
+    let primeiroDigito = (somaTotal * 10) % 11;
+    if (numeroCpf[9] == primeiroDigito) {
+      x = 11;
+      somaTotal = 0;
+      for (let i = 0; i < 10; i++) {
+        multi = numeroCpf[i] * x;
+        somaTotal = somaTotal + multi;
+        x--;
+      }
+    } else {
+      console.log("CPF inválido");
+    }
+    let segundoDigito = (somaTotal * 10) % 11;
+    if (numeroCpf[9] == primeiroDigito && numeroCpf[10] == segundoDigito) {
+      console.log("CPF válido");
+    } else {
+      console.log("CPF inválido");
+    }
+  }  
+  validacaoTest(numeroCpf);
+  
